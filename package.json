@@ -5,10 +5,8 @@
 	"main": "app.js",
 	"scripts": {
 		"start": "node app.js",
-        "lint": "jshint src/js/publications.js",
-        "build:node": "node build.js",
-        "build:dir": "mkdir build",
-        "build": "npm run build:dir && npm run build:node"
+        "release": "node build.js --release",
+        "build": "node build.js"
 	},
 	"engines": {
 		"node": ">=0.10.0"
@@ -23,7 +21,6 @@
 		"serve-static": "",
 		"connect": "",
 		"network":"",
-        "jshint":"",
         "buildify":""
   	}
 }

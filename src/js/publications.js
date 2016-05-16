@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2016-2016 Thiago Nascimento
+ * Copyright (c) 2016-2016 Thiago do Nascimento Ferreira
  * Licensed under the MIT license
  * http://github.com/thiagodnf/publications.js
  */
 
-  function Publications (bibtexSource, bibtexTable, bibtextChart) {
+  function Publications (bibtexSource, bibtexTable, bibtextChart, options) {
 
     /** Events from object */
     this.events = {};
@@ -21,11 +21,25 @@
 
     this.bibtexChart = "";
 
+    this.defaultOptions = {
+        visualization: true,
+        defaultYear: "To Appear",
+        chartTitle: "List of Publications",
+        enabledLegend: true,
+        enabledDataLabels: true,
+        yAxisTitle: 'Number of Papers'
+    };
+
+    this.options = {};
+
      /** Contructor */
-     this.initialize = function(bibtexSource, bibtexTable, bibtexChart){
+     this.initialize = function(bibtexSource, bibtexTable, bibtexChart, options){
          this.bibtexSource = bibtexSource;
          this.bibtexTable = bibtexTable;
          this.bibtexChart = bibtexChart;
+
+         // Merge the options
+         this.options = $.extend({}, this.defaultOptions, options || {});
 
          // Hide the bibtex source
          $(bibtexSource).hide();
@@ -67,14 +81,14 @@
              'book': 'Book',
              'booklet': 'Booklet',
              'conference': 'Conference',
-             'inbook': 'Book chapter',
+             'inbook': 'Book Chapter',
              'incollection': 'In Collection',
              'inproceedings': 'Conference',
              'manual': 'Manual',
              'mastersthesis': "Master's Thesis",
              'misc': 'Misc',
              'phdthesis': 'PhD Thesis',
-             'proceedings': 'Conference proceeding',
+             'proceedings': 'Conference Proceeding',
              'techreport': 'Technical Report',
              'unpublished': 'Unpublished'
          };
@@ -131,7 +145,7 @@
          $.each(this.entries, function(key, entry){
             // Append new row
             that.table.row.add( [
-                entry.year,                             // YEAR COLUMN
+                that._get("YEAR", entry.year),          // YEAR COLUMN
                 that.getType(entry.entryType),          // TYPE COLUMN
                 that.convertEntryToReference(entry),    // PUBLICATION COLUMN
             ]);
@@ -146,7 +160,12 @@
      }
 
      this.updateChart = function(){
-        var years = this.getYears(this.entries);
+
+         if(! this.options.visualization){
+             return;
+         }
+
+         var years = this.getYears(this.entries);
 
         var stats = {};
 
@@ -171,7 +190,12 @@
                  data.push(stats[s][year] || 0)
              });
 
-             series.push({name:this.getType(s), data:data});
+             // Add only the series that have at least a value
+             var sum = data.reduce(function(a, b){return a+b;});
+
+             if(sum > 0){
+                 series.push({name:this.getType(s), data:data});
+             }
          }
 
          $(this.bibtexChart).highcharts({
@@ -179,7 +203,7 @@
                  type: 'column'
              },
              title: {
-                 text: 'List of Publications'
+                 text: this.options.chartTitle
              },
              xAxis: {
                  categories: years
@@ -187,7 +211,7 @@
              yAxis: {
                  min: 0,
                  title: {
-                     text: 'Number of Papers'
+                     text: this.options.yAxisTitle
                  },
                  stackLabels: {
                      enabled: true,
@@ -198,6 +222,7 @@
                  }
              },
              legend: {
+                 enabled: this.options.enabledLegend,
                  align: 'right',
                  x: -30,
                  verticalAlign: 'top',
@@ -216,7 +241,7 @@
                  column: {
                      stacking: 'normal',
                      dataLabels: {
-                         enabled: true,
+                         enabled: this.options.enabledDataLabels,
                          color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
                          style: {
                              textShadow: '0 0 3px black'
@@ -237,11 +262,16 @@
 
      /** Return only the years of the entries */
      this.getYears = function(entries){
+         var that = this;
+
         var years = [];
 
         $.each(entries, function(key, entry){
             if(years.indexOf(entry.year) == -1){
-                years.push(entry.year);
+                // Do not add the 'To Appear' from chart
+                if(entry.year && entry.year !== ""){
+                    years.push(entry.year);
+                }
             }
         });
 
@@ -453,9 +483,9 @@
         } else if(entry.entryType == "misc"){
             reference = "AUTHORS (YEAR). <em>TITLE<\/em>. HOWPUBLISHED. NOTE.";
         } else if(entry.entryType == "techreport"){
-            reference = "AUTHORS (YEAR). TITLE. INSTITUTION. NUMBER. TYPE";
+            reference = "AUTHORS (YEAR). TITLE. <em>INSTITUTION. NUMBER. Tech. Rep.<\/em>";
         } else if(entry.entryType == "inbook"){
-            reference = "AUTHORS (YEAR). CHAPTER in <em>TITLE<\/em>, Edited by EDITOR, PUBLISHER, pp. PAGES, <em> SERIES<\/em>, Vol. VOLUME, ISBN: ISBN'";
+            reference = "AUTHORS (YEAR). TITLE in <em>BOOKTITLE<\/em>, Edited by EDITOR, PUBLISHER, pp. PAGES, <em> SERIES<\/em>, Vol. VOLUME, ISBN: ISBN'";
         }
 
         // Replace all key in the string;
@@ -513,13 +543,15 @@
 
      /** Get bibtex object's field */
      this._get = function(key, field){
-         if(key == "PAGES" &&  ! field || field === ""){
+         if(key == "PAGES" &&  (! field || field === "")){
              return "<span class='pub-missing'>Missing " + key + "</span>";
+         }else if(key == "YEAR" &&  (! field || field === "")){
+             return this.options.defaultYear;
          }
 
          return this.htmlify(field || "");
      }
 
      // Call the constructor
-     this.initialize(bibtexSource, bibtexTable, bibtextChart)
+     this.initialize(bibtexSource, bibtexTable, bibtextChart, options)
  }

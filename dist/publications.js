@@ -763,14 +763,14 @@ _fnCallbackFire:u,_fnLengthOverflow:Sa,_fnRenderer:Pa,_fnDataSource:y,_fnRowAttr
              'book': 'Book',
              'booklet': 'Booklet',
              'conference': 'Conference',
-             'inbook': 'Book Chapter',
+             'inbook': 'Book chapter',
              'incollection': 'In Collection',
              'inproceedings': 'Conference',
              'manual': 'Manual',
              'mastersthesis': "Master's Thesis",
              'misc': 'Misc',
              'phdthesis': 'PhD Thesis',
-             'proceedings': 'Conference Proceeding',
+             'proceedings': 'Conference proceeding',
              'techreport': 'Technical Report',
              'unpublished': 'Unpublished'
          };
@@ -1165,9 +1165,9 @@ _fnCallbackFire:u,_fnLengthOverflow:Sa,_fnRenderer:Pa,_fnDataSource:y,_fnRowAttr
         } else if(entry.entryType == "misc"){
             reference = "AUTHORS (YEAR). <em>TITLE<\/em>. HOWPUBLISHED. NOTE.";
         } else if(entry.entryType == "techreport"){
-            reference = "AUTHORS (YEAR). TITLE. <em>INSTITUTION. NUMBER. Tech. Rep.<\/em>";
+            reference = "AUTHORS (YEAR). TITLE. INSTITUTION. NUMBER. TYPE";
         } else if(entry.entryType == "inbook"){
-            reference = "AUTHORS (YEAR). TITLE in <em>BOOKTITLE<\/em>, Edited by EDITOR, PUBLISHER, pp. PAGES, <em> SERIES<\/em>, Vol. VOLUME, ISBN: ISBN'";
+            reference = "AUTHORS (YEAR). CHAPTER in <em>TITLE<\/em>, Edited by EDITOR, PUBLISHER, pp. PAGES, <em> SERIES<\/em>, Vol. VOLUME, ISBN: ISBN'";
         }
 
         // Replace all key in the string;
