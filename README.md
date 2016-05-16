@@ -4,7 +4,13 @@ An interactive publications list developed with Bibtex, JavaScript and HTML. You
 
 ## Screenshot
 
+The following image shows the publications.js in action.
+
 ![alt tag](https://raw.githubusercontent.com/thiagodnf/publications.js/master/screenshot.png)
+
+## Example
+
+An example can be found in [this page](https://jquery.com/).
 
 ## Usage
 
