@@ -1,6 +1,6 @@
 # publications.js
 
-An interactive publications list developed with Bibtex, JavaScript and HTML. You can use the following entry type:
+An interactive publications list developed with Bibtex, JavaScript and HTML. You can use the following bibtex entries: article, book, booklet, conference, inbook, incollection, inproceedings, manual, mastersthesis, misc, phdthesis, proceedings, techreport, unpublished.
 
 ## Screenshot
 
@@ -34,7 +34,7 @@ Add three divs in your webpage and give them an id. For example:
 <div id="table"></div>
 ```
 
-Include the bibtex entry into an div. In this case, we added the entry in the 'source' id. For example:
+Include the bibtex entries into an div. In this case, we added the entry in the 'source' id. For example:
 
 ```html
 <div id="source">
