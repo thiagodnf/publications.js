@@ -1,0 +1,17 @@
+.pub-missing{
+    color: red;
+}
+
+.pub-link {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.remodal-wrapper .remodal pre {
+    padding: 9.5px;
+    text-align: left;
+    overflow-x: scroll;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

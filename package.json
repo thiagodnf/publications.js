@@ -1,0 +1,29 @@
+{
+	"name": "publications.js",
+	"version": "1.0.0",
+	"description": "A interactive publications list developed with Bibtex, JavaScript and HTML",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+        "lint": "jshint src/js/publications.js",
+        "build:node": "node build.js",
+        "build:dir": "mkdir build",
+        "build": "npm run build:dir && npm run build:node"
+	},
+	"engines": {
+		"node": ">=0.10.0"
+	},
+	"files": [
+		"app.js"
+	],
+	"author": "Thiago Nascimento Ferreira",
+	"license": "MIT",
+	"homepage": "http://thiagodnf.github.io/word-counter",
+	"dependencies": {
+		"serve-static": "",
+		"connect": "",
+		"network":"",
+        "jshint":"",
+        "buildify":""
+  	}
+}
