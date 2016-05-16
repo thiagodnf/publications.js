@@ -4,6 +4,7 @@ An interactive publications list developed with Bibtex, JavaScript and HTML.
 
 ## Screenshot
 
+![alt tag](https://raw.githubusercontent.com/thiagodnf/publications.js/master/screenshot.png)
 
 ## Usage
 
@@ -37,12 +38,14 @@ Include the bibtex entry into an div. In this case, we added the entry in the 's
 
 Finally, the publications.js needs to know the input data, chart, and table elements. So, one line of JavaScript:
 
+```javascript
     <script type="text/javascript" charset="utf8">
         // Create the object
         var publications = new Publications("#source", "#table", "#chart");
         // Display the results on the screen
         publications.draw();
     </script>
+```
 
 ## Configuration Options
 
