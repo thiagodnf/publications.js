@@ -97,13 +97,13 @@ git clone git@github.com:thiagodnf/publications.js.git
 Install the dependencies:
 
 ```
-    npm install
+npm install
 ```
 
 Running the server:
 
 ```
-    npm start
+npm start
 ```
 
 Open the browser at:
