@@ -1168,6 +1168,8 @@ _fnCallbackFire:u,_fnLengthOverflow:Sa,_fnRenderer:Pa,_fnDataSource:y,_fnRowAttr
             reference = "AUTHORS (YEAR). TITLE. <em>INSTITUTION. NUMBER. Tech. Rep.<\/em>";
         } else if(entry.entryType == "inbook"){
             reference = "AUTHORS (YEAR). TITLE in <em>BOOKTITLE<\/em>, Edited by EDITOR, PUBLISHER, pp. PAGES, <em> SERIES<\/em>, Vol. VOLUME, ISBN: ISBN'";
+        } else {
+            reference = "AUTHORS (YEAR). TITLE. In <em>BOOKTITLE<\/em>, pp. PAGES, ADDRESS.";
         }
 
         // Replace all key in the string;
