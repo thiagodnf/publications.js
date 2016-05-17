@@ -17,13 +17,13 @@ An example can be found in [this page](https://jquery.com/).
 First, load the required javascript file:
 
 ```html
-<script type="text/javascript" charset="utf8" src="publications.min.js"></script>
+<script type="text/javascript" charset="utf8" src="dist/publications.min.js"></script>
 ```
 
 Include the CSS file in the <head> section of your web page as shown below.:
 
 ```html
-<link type="text/css" rel="stylesheet" href="publications.css"/>
+<link type="text/css" rel="stylesheet" href="dist/publications.css"/>
 ```
 
 Add three divs in your webpage and give them an id. For example:
