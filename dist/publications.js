@@ -752,6 +752,7 @@ _fnCallbackFire:u,_fnLengthOverflow:Sa,_fnRenderer:Pa,_fnDataSource:y,_fnRowAttr
          // Create datatable component
          this.table = $("#p-table").DataTable({
              "order": [[ 0, "desc" ]],   // Sort by year. Newer first.
+             "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
          });
      };
 

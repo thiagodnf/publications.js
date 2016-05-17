@@ -7,45 +7,78 @@
         <meta name="description" content="An interactive publications list developed with Bibtex, JavaScript and HTML">
 	  	<meta name="author" content="Thiago Nascimento">
 		<meta name="keywords" content="bibtex, publications list">
-        <title>publications.js | Interactive Publications List for Your Webpage</title>
+        <title>publications.js | An interactive publications list for your webpage</title>
         <link href="http://fonts.googleapis.com/css?family=Amaranth:400,700" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="build/publications.css"/>
+        <link rel="stylesheet" type="text/css" href="dist/publications.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <style>
             body{
-                background: #ecf0f1;
-                padding-top: 20px;
-                padding-bottom: 20px;
+                background: #FAFAFA;
+                padding-top: 80px;
             }
             #logo{
-                /*margin-top: 10px;
-                margin-bottom: 50px;*/
-                font-size: 40px;
+                margin-top: 10px;
+                /*margin-bottom: 50px;*/
+                font-size: 30px;
                 font-family: 'Amaranth', sans-serif;
-                text-shadow: 0px 2px 0px #fff;
-                color: #333;
+                text-shadow: 0px 2px 0px black;
+                color: white;
             }
 
             #chart{
                 margin-bottom: 20px;
-                box-shadow: 0 2.5px 2.5px 0 rgba(0,0,0,.14),0 3.5px 1.5px -2.5px rgba(0,0,0,.2),0 1.5px 5.5px 0 rgba(0,0,0,.12);
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
             }
+            .navbar-right{
+                margin-top: 2px;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-brand {
+                color: rgba(255, 255, 255, 1);
+            }
+            #custom-bootstrap-menu.navbar-default {
+                font-size: 14px;
+                background-color: rgba(72, 120, 160, 1);
+                border-width: 1px;
+                border-radius: 0px;
+                border-color: rgba(72, 120, 160, 1);
 
-            /* Custom page header */
-            .header {
-                padding-bottom: 20px;
-                border-bottom: 1px solid gray;
+                -webkit-box-shadow: 0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+                -moz-box-shadow:    0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+                box-shadow:         0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
             }
-            /* Make the masthead heading the same height as the navigation */
-            .header h3 {
-                margin-top: 0;
-                margin-bottom: 0;
-                line-height: 40px;
+            #custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+                color: rgba(255, 255, 255, 1);
+                background-color: rgba(248, 248, 248, 0);
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+            #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+                color: rgba(44, 75, 102, 1);
+                background-color: rgba(248, 248, 248, 0);
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+            #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+            #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+                color: rgba(255, 255, 255, 1);
+                background-color: rgba(44, 75, 102, 1);
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle {
+                border-color: #2c4b66;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+                background-color: #2c4b66;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+                background-color: #2c4b66;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+                background-color: #4878a0;
             }
         </style>
     </head>
-    <body><!--
-        <nav class="navbar transparent navbar-no-border navbar-fixed-top">
+    <body>
+        <nav id="custom-bootstrap-menu"  class="navbar navbar-default navbar-fixed-top" >
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -61,26 +94,15 @@
 						<li><h1 id="logo">publications.js</h1></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" >Home</a></li>
+                        <li><a target="_blank" href="https://github.com/thiagodnf/publications.js#usage" >Docs</a></li>
                         <li><a href="https://github.com/thiagodnf/publications.js/archive/master.zip" >Download</a></li>
                         <li><a target="_blank" href="https://github.com/thiagodnf/publications.js" >Github</a></li>
                         <li><a target="_blank" href="https://github.com/thiagodnf/publications.js/issues" >Support</a></li>
 					</ul>
 				</div>
 			</div>
-		</nav>-->
+		</nav>
         <div class="container">
-            <div class="header clearfix">
-                <nav>
-                    <ul class="nav nav-pills pull-right">
-                        <li><a href="https://github.com/thiagodnf/publications.js/archive/master.zip" >Download</a></li>
-                        <li><a target="_blank" href="https://github.com/thiagodnf/publications.js" >Github</a></li>
-                        <li><a target="_blank" href="https://github.com/thiagodnf/publications.js/issues" >Support</a></li>
-                    </ul>
-                </nav>
-                <h3 class="text-muted" id="logo">publications.js</h3>
-            </div>
-            <br>
             <div id="source">
                 @inproceedings{Paixao2013Scenario,
                     author = {Paixão, Matheus and Souza, Jerffeson},
@@ -174,7 +196,7 @@
             <div id="chart"></div>
             <div id="table"></div>
         </div>
-        <script type="text/javascript" charset="utf8" src="build/publications.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="dist/publications.min.js"></script>
 
         <script>
             var publications = new Publications("#source","#table","#chart");
