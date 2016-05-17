@@ -105,8 +105,8 @@ The publications.js library contains some events. The events are:
 For example:
 
 ``` Javascript
- // Create the object with the custom options
- var publications = new Publications("#source", "#table", "#chart", options);
+ // Create the object
+ var publications = new Publications("#source", "#table", "#chart");
  
  publications.on("table.process.entry", function(entry){
     //Print the entry in the console.    
