@@ -10,7 +10,7 @@ The following image shows the publications.js in action.
 
 ## Example
 
-An example can be found in [this page](https://jquery.com/).
+An example can be found in [this page](http://thiagodnf.github.io/publications.js/).
 
 ## Usage
 
@@ -65,7 +65,7 @@ Finally, the publications.js needs to know the input data, chart, and table elem
 
 The publications.js accepts an optional fourth parameter for configuration options. These options include:
 
-|Parameter        |Type    |Default Value         | Action                                            |
+|Name             |Type    |Default Value         | Description                                       |
 |-----------------|--------|----------------------|---------------------------------------------------|
 |visualization    |boolean |true                  |A boolean to control addition of the visualization |
 |defaultYear      |string  |"To Appear"           |Entries without a year will use this as year       |
@@ -90,6 +90,31 @@ The following is an example of the use of the configuration options:
     // Display the results on the screen
     publications.draw();
 </script>
+```
+
+## Events
+
+The publications.js library contains some events. The events are: 
+
+|Event                   |Description                                          |
+|------------------------|-----------------------------------------------------|
+|"table.before.addRows"  |This event fires before add the entries in the table |
+|"table.process.entry"   |This event fires when an entry is processed          |
+|"table.after.addRows"   |This event fires after add the entries in the table  |
+
+For example:
+
+``` Javascript
+ // Create the object with the custom options
+ var publications = new Publications("#source", "#table", "#chart", options);
+ 
+ publications.on("table.process.entry", function(entry){
+    //Print the entry in the console.    
+    console.log(entry);
+ });
+ 
+ // Display the results on the screen
+ publications.draw();
 ```
 
 ## Building and Running Locally
