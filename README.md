@@ -114,7 +114,7 @@ npm start
 
 Open the browser at:
 
-    http://localhost:8080/example.html
+    http://localhost:8080/
 
 ## Credits
 
