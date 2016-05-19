@@ -27,7 +27,8 @@
         chartTitle: "List of Publications",
         enabledLegend: true,
         enabledDataLabels: true,
-        yAxisTitle: 'Number of Papers'
+        yAxisTitle: 'Number of Papers',
+        defaultPagination: 10,
     };
 
     this.options = {};
@@ -70,7 +71,8 @@
          // Create datatable component
          this.table = $("#p-table").DataTable({
              "order": [[ 0, "desc" ]],   // Sort by year. Newer first.
-             "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+             "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+             "iDisplayLength": this.options.defaultPagination
          });
      };
 

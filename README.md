@@ -65,14 +65,15 @@ Finally, the publications.js needs to know the input data, chart, and table elem
 
 The publications.js accepts an optional fourth parameter for configuration options. These options include:
 
-|Name             |Type    |Default Value         | Description                                       |
-|-----------------|--------|----------------------|---------------------------------------------------|
-|visualization    |boolean |true                  |A boolean to control addition of the visualization |
-|defaultYear      |string  |"To Appear"           |Entries without a year will use this as year       |
-|chartTitle       |string  |"List of Publications"|Change the chart title                             |
-|enabledLegend    |boolean |true                  |Enable or not the chart's legend                   |
-|enabledDataLabels|boolean |true                  |Enable or not the chart's datalabels               |
-|yAxisTitle       |string  |"Number of Papers"    |Change the y-axis title                            |
+|Name             |Type    |Default Value         | Description                                          |
+|-----------------|--------|----------------------|------------------------------------------------------|
+|visualization    |boolean |true                  |A boolean to control addition of the visualization    |
+|defaultYear      |string  |"To Appear"           |Entries without a year will use this as year          |
+|chartTitle       |string  |"List of Publications"|Change the chart title                                |
+|enabledLegend    |boolean |true                  |Enable or not the chart's legend                      |
+|enabledDataLabels|boolean |true                  |Enable or not the chart's datalabels                  |
+|yAxisTitle       |string  |"Number of Papers"    |Change the y-axis title                               |
+|defaultPagination|integer |10                    |Change the number of rows to display on a single page |
 
 The following is an example of the use of the configuration options:
 
@@ -94,7 +95,7 @@ The following is an example of the use of the configuration options:
 
 ## Events
 
-The publications.js library contains some events. The events are: 
+The publications.js library contains some events. The events are:
 
 |Event                   |Description                                          |
 |------------------------|-----------------------------------------------------|
@@ -107,12 +108,12 @@ For example:
 ``` Javascript
  // Create the object
  var publications = new Publications("#source", "#table", "#chart");
- 
+
  publications.on("table.process.entry", function(entry){
     //Print the entry in the console.    
     console.log(entry);
  });
- 
+
  // Display the results on the screen
  publications.draw();
 ```
