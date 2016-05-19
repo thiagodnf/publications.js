@@ -3,7 +3,7 @@ var fs = require('fs');
 
 var jsFiles = [
     'lib/js/jquery.min.js',
-    'lib/js/BibTex-0.1.2.min.js',
+    'lib/js/BibTex-0.1.2.js',
     'lib/js/highcharts.js',
     'lib/js/jquery.dataTables.min.js',
     'lib/js/remodal.min.js',

@@ -21,6 +21,8 @@
 
     this.bibtexChart = "";
 
+    this.warnings = [];
+
     this.defaultOptions = {
         visualization: true,
         defaultYear: "To Appear",
@@ -71,7 +73,7 @@
          // Create datatable component
          this.table = $("#p-table").DataTable({
              "order": [[ 0, "desc" ]],   // Sort by year. Newer first.
-             "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+             "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
              "iDisplayLength": this.options.defaultPagination
          });
      };
@@ -108,7 +110,7 @@
          // Parse the bibtext file
          bibtex.parse();
 
-         console.log(bibtex.warnings);
+         this.warnings = bibtex.warnings;
 
          // Array with all entries
          var entries = [];
