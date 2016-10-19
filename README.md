@@ -34,7 +34,7 @@ Add three divs in your webpage and give them an id. For example:
 <div id="table"></div>
 ```
 
-Include the bibtex entries into an div. In this case, we added the entry in the 'source' id. For example:
+Include the bibtex entries into a div. In this case, we added the entry in the 'source' id. For example:
 
 ```html
 <div id="source">
@@ -65,15 +65,18 @@ Finally, the publications.js needs to know the input data, chart, and table elem
 
 The publications.js accepts an optional fourth parameter for configuration options. These options include:
 
-|Name             |Type    |Default Value         | Description                                          |
-|-----------------|--------|----------------------|------------------------------------------------------|
-|visualization    |boolean |true                  |A boolean to control addition of the visualization    |
-|defaultYear      |string  |"To Appear"           |Entries without a year will use this as year          |
-|chartTitle       |string  |"List of Publications"|Change the chart title                                |
-|enabledLegend    |boolean |true                  |Enable or not the chart's legend                      |
-|enabledDataLabels|boolean |true                  |Enable or not the chart's datalabels                  |
-|yAxisTitle       |string  |"Number of Papers"    |Change the y-axis title                               |
-|defaultPagination|integer |10                    |Change the number of rows to display on a single page |
+|Name                     |Type    |Default Value         | Description                                          |
+|-------------------------|--------|----------------------|------------------------------------------------------|
+|visualization            |boolean |true                  |A boolean to control addition of the visualization    |
+|defaultYear              |string  |"To Appear"           |Entries without a year will use this as year          |
+|chartTitle               |string  |"List of Publications"|Change the chart title                                |
+|enabledLegend            |boolean |true                  |Enable or not the chart's legend                      |
+|enabledDataLabels        |boolean |true                  |Enable or not the chart's datalabels                  |
+|yAxisTitle               |string  |"Number of Papers"    |Change the y-axis title                               |
+|defaultPagination        |integer |10                    |Change the number of rows to display on a single page |
+|transparentBackground    |boolean |false                 |Change the chart's background color to transparent    |
+|backgroundColor          |string  |white                 |Change the chart's background color                   |
+|dontShowBibtexEntryTypes |string  |[]                    |Dont show some bibtex entry types on Chart and table  |
 
 The following is an example of the use of the configuration options:
 

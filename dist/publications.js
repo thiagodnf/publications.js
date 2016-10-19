@@ -2429,6 +2429,9 @@ _fnCallbackFire:u,_fnLengthOverflow:Sa,_fnRenderer:Pa,_fnDataSource:y,_fnRowAttr
         enabledDataLabels: true,
         yAxisTitle: 'Number of Papers',
         defaultPagination: 10,
+        transparentBackground: false,
+        backgroundColor: 'white',
+        dontShowBibtexEntryTypes: []
     };
 
     this.options = {};
@@ -2514,7 +2517,9 @@ _fnCallbackFire:u,_fnLengthOverflow:Sa,_fnRenderer:Pa,_fnDataSource:y,_fnRowAttr
          var entries = [];
          // Save all converted entries
          for (var index = 0; index < bibtex.data.length; index++) {
+           if(this.options.dontShowBibtexEntryTypes.indexOf(bibtex.data[index].entryType) == -1){
              entries.push(bibtex.data[index]);
+           }
          }
 
          // Call TRIM function in the all fields
@@ -2603,7 +2608,8 @@ _fnCallbackFire:u,_fnLengthOverflow:Sa,_fnRenderer:Pa,_fnDataSource:y,_fnRowAttr
 
          $(this.bibtexChart).highcharts({
              chart: {
-                 type: 'column'
+                 type: 'column',
+                 backgroundColor: this.options.transparentBackground? null : this.options.backgroundColor
              },
              title: {
                  text: this.options.chartTitle
