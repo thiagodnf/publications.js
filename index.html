@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+        <meta name="description" content="An interactive publications list developed with Bibtex, JavaScript and HTML">
+	  	<meta name="author" content="Thiago Nascimento">
+		<meta name="keywords" content="bibtex, publications list">
+        <title>publications.js | An interactive publications list for your webpage</title>
+        <link href="http://fonts.googleapis.com/css?family=Amaranth:400,700" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="dist/publications.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <style>
+            body{
+                background: #FAFAFA;
+                padding-top: 80px;
+            }
+            #logo{
+                margin-top: 10px;
+                /*margin-bottom: 50px;*/
+                font-size: 30px;
+                font-family: 'Amaranth', sans-serif;
+                text-shadow: 0px 2px 0px black;
+                color: white;
+            }
+
+            #chart{
+                margin-bottom: 20px;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+            }
+            .navbar-right{
+                margin-top: 2px;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-brand {
+                color: rgba(255, 255, 255, 1);
+            }
+            #custom-bootstrap-menu.navbar-default {
+                font-size: 14px;
+                background-color: rgba(72, 120, 160, 1);
+                border-width: 1px;
+                border-radius: 0px;
+                border-color: rgba(72, 120, 160, 1);
+
+                -webkit-box-shadow: 0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+                -moz-box-shadow:    0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+                box-shadow:         0px 1.5px 5px 0px rgba(50, 50, 50, 0.75);
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+                color: rgba(255, 255, 255, 1);
+                background-color: rgba(248, 248, 248, 0);
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+            #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+                color: rgba(44, 75, 102, 1);
+                background-color: rgba(248, 248, 248, 0);
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+            #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+            #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+                color: rgba(255, 255, 255, 1);
+                background-color: rgba(44, 75, 102, 1);
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle {
+                border-color: #2c4b66;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+                background-color: #2c4b66;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+                background-color: #2c4b66;
+            }
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+            #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+                background-color: #4878a0;
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="custom-bootstrap-menu"  class="navbar navbar-default navbar-fixed-top" >
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><h1 id="logo">publications.js</h1></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+                        <li><a target="_blank" href="https://github.com/thiagodnf/publications.js#usage" >Docs</a></li>
+                        <li><a href="https://github.com/thiagodnf/publications.js/archive/master.zip" >Download</a></li>
+                        <li><a target="_blank" href="https://github.com/thiagodnf/publications.js" >Github</a></li>
+                        <li><a target="_blank" href="https://github.com/thiagodnf/publications.js/issues" >Support</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+        <div class="container">
+            <div id="source">
+                @inproceedings{Paixao2013Scenario,
+                    author = {Paixão, Matheus and Souza, Jerffeson},
+                    title = {A Scenario-based Robust Model for the Next Release Problem},
+                    booktitle = {Proceedings of the 15th Annual Conference on Genetic and Evolutionary Computation (GECCO'15)},
+                    series = {GECCO '13},
+                    year = {2013},
+                    isbn = {978-1-4503-1963-8},
+                    location = {Amsterdam, The Netherlands},
+                    pages = {1469--1476},
+                    numpages = {8},
+                    url = {http://doi.acm.org/10.1145/2463372.2463547},
+                    doi = {10.1145/2463372.2463547},
+                    acmid = {2463547},
+                    publisher = {ACM},
+                    address = {New York, NY, USA},
+                    keywords = {next release problem, robust optimization, search based software engineering},
+                }
+                @article{paixao2015robust,
+                    title={A robust optimization approach to the next release problem in the presence of uncertainties},
+                    author={Paixao, Matheus and Souza, Jerffeson},
+                    journal={Journal of Systems and Software},
+                    volume={103},
+                    pages={281--295},
+                    year={2015},
+                    publisher={Elsevier}
+                }
+                @book{dorigo2004ant,
+                    title={Ant Colony Optimization},
+                    author={Marco Dorigo and Thomas Stützle},
+                    isbn = {0262042193},
+                    publisher = {Bradford Company},
+                    address = {Scituate, Massachusetts, USA},
+                    year={2004}
+                }
+                @inproceedings{Souza2011Ant,
+                    pages = {142-157},
+                    volume = {9656},
+                    address = {Szeged, Csongrád, Hungary},
+                    booktitle = {Proceedings of the 3rd International Symposium on Search Based Software Engineering (SSBSE'11)},
+                    year = {2011},
+                    title = {An Ant Colony Optimization Approach to the Software Release Planning with Dependent Requirements},
+                    author = {Jerffeson Teixeira De Souza and Camila Loiola Brito Maia and Thiago do Nascimento Ferreira and Rafael Augusto Ferreira do Carmo and Márcia Maria Albuquerque Brasil},
+                }
+                @inbook{de2015applying,
+                    title={Applying Evolutionary Many-Objective Optimization Algorithms to the Quality-Driven Web Service Composition Problem},
+                    author={Arion de Campos Jr and Aurora Pozo and Silvia Regina Vergilio},
+                    booktitle={Automated Enterprise Systems for Maximizing Business Performance},
+                    pages={170-194},
+                    volume={1},
+                    series={},
+                    isbn={9781466688414},
+                    doi={10.4018/978-1-4666-8841-4.ch010},
+                    editor={Petraq Papajorgji and François Pinet and Alaine Margarete Guimarães and Jason Papathanasiou},
+                    year={2015},
+                    publisher={IGI Global}
+                }
+                @mastersthesis{Ferreira2015Abordagens,
+                    organization = { Academic Masters in Computer Science (MACC) },
+                    type = { Masters Thesis },
+                    url = { http://uece.br/macc/index.php/arquivos/doc_download/285- },
+                    year = { 2015 },
+                    school = { State University of Ceará (UECE) },
+                    title = { Abordagens Interativas Usando Algoritmo de Otimização por Colônia de Formiga Para o Problema do Próximo Release },
+                    author = { Thiago do Nascimento Ferreira },
+                }
+                @phdthesis{Ferreira2015Abordagens,
+                    organization = { Department of Informatics },
+                    type = { PhD Thesis },
+                    year = { 2014 },
+                    school = { Federal University of Paraná (UFPR) },
+                    title = { Uma abordagem de otimização multiobjetivo para projeto arquitetural de linha de produto de software},
+                    author = { Thelma Elita Colanzi},
+                }
+                @techreport{harman2009search,
+                    title={Search based software engineering: A comprehensive analysis and review of trends techniques and applications},
+                    author={Harman, Mark and Mansouri, S Afshin and Zhang, Yuanyuan},
+                    number={TR-09-03},
+                    institution={Department of Computer Science, King’s College London},
+                    year={2009}
+                }
+                @inproceedings{ascari2009exploring,
+                    title={Exploring machine learning techniques for fault localization},
+                    author={Luciano C. Ascari and Lucilia Y. Araki and Aurora T. Pozo and Silvia R. Vergilio},
+                    booktitle={Proceedings of the 10th Latin American Test Workshop (LATW'09)},
+                    pages={1--6},
+                    year={2009},
+                    organization={IEEE}
+                }
+            </div>
+            <div id="chart"></div>
+            <div id="table"></div>
+        </div>
+        <script type="text/javascript" charset="utf8" src="lib/js/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="lib/js/remodal.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="lib/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="lib/js/highcharts.js"></script>
+        <script type="text/javascript" charset="utf8" src="lib/js/BibTex-0.1.2.js"></script>
+        <script type="text/javascript" charset="utf8" src="src/js/publications.js"></script>
+
+        <script>
+            var publications = new Publications("#source","#table","#chart");
+            publications.draw();
+        </script>
+		<script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46693870-13', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
