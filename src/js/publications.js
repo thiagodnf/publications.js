@@ -68,10 +68,17 @@
          // Parse from bibtext file to javascript object
          this.entries = this.parse($(bibtexSource).html());
 
-         $(document).on('click', ".pub-bib-link", function(){
-             var key = $(this).attr("data-bibtex-open");
-             $("[data-bibtex-key="+key+"]").remodal().open();
-         });
+        $(document).on('click', ".pub-bib-link", function(event){
+          event.preventDefault();
+
+          $(".bibtex-entries").hide();
+
+          var key = $(this).attr("data-bibtex-open");
+
+          $("#"+key).toggle()
+
+          return false;
+        });
 
          // Create datatable component
          this.table = $("#p-table").DataTable({
@@ -539,8 +546,8 @@
 
         reference += " (<a href='#' class='pub-link pub-bib-link' data-bibtex-open='" + uuid + "'>bib</a>)";
 
-        reference += "<div data-remodal-id='modal' data-bibtex-key='" + uuid + "'>";
-        reference += "<button data-remodal-action='close' class='remodal-close'></button>";
+
+        reference += "<div class='bibtex-entries' style='display:none' id='" + uuid + "'>";
         reference += "<pre>";
         reference += this.convertEntryToBibtex(entry);
         reference += "</pre>";

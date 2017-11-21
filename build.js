@@ -6,14 +6,11 @@ var jsFiles = [
     'lib/js/BibTex-0.1.2.js',
     'lib/js/highcharts.js',
     'lib/js/jquery.dataTables.min.js',
-    'lib/js/remodal.min.js',
     'src/js/publications.js'
 ];
 
 var cssFiles = [
     'lib/css/jquery.dataTables.css',
-    'lib/css/remodal.css',
-    'lib/css/remodal-default-theme.css',
     'src/css/publications.css'
 ];
 
