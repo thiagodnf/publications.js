@@ -52,7 +52,7 @@
 
          // Create the table and put it in the bibtext table
          $(bibtexTable).html(" \
-             <table id='p-table' class='display' cellspacing='0' width='100%'> \
+             <table id='p-table' class='table table-striped table-bordered' cellspacing='0' width='100%'> \
                  <thead> \
                      <tr> \
                          <th width='40px'>Year</th> \

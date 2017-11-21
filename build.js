@@ -6,11 +6,12 @@ var jsFiles = [
     'lib/js/BibTex-0.1.2.js',
     'lib/js/highcharts.js',
     'lib/js/jquery.dataTables.min.js',
+    'lib/js/dataTables.bootstrap.min.js',
     'src/js/publications.js'
 ];
 
 var cssFiles = [
-    'lib/css/jquery.dataTables.css',
+    'lib/css/dataTables.bootstrap.min.css',
     'src/css/publications.css'
 ];
 
